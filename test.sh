@@ -47,40 +47,42 @@ test_all()
 pkill -9 $server_bin_name
 
 echo ","$(IFS=$','; echo "${web_frameworks[*]}" ) > processtime.csv
+test_all 0 100
+echo "100 concurrency,"$(IFS=$','; echo "${test_result[*]}" ) >> processtime.csv
+test_all 0 500
+echo "500 concurrency,"$(IFS=$','; echo "${test_result[*]}" ) >> processtime.csv
+test_all 0 1000
+echo "1000 concurrency,"$(IFS=$','; echo "${test_result[*]}" ) >> processtime.csv
+test_all 0 2500
+echo "2500 concurrency,"$(IFS=$','; echo "${test_result[*]}" ) >> processtime.csv
 test_all 0 5000
-echo "0 ms,"$(IFS=$','; echo "${test_result[*]}" ) >> processtime.csv
-test_all 10 5000
-echo "10 ms,"$(IFS=$','; echo "${test_result[*]}" ) >> processtime.csv
-test_all 100 5000
-echo "100 ms,"$(IFS=$','; echo "${test_result[*]}" ) >> processtime.csv
-test_all 500 5000
-echo "500 ms,"$(IFS=$','; echo "${test_result[*]}" ) >> processtime.csv
+echo "5000 concurrency,"$(IFS=$','; echo "${test_result[*]}" ) >> processtime.csv
 
 
-echo ","$(IFS=$','; echo "${web_frameworks[*]}" ) > concurrency.csv
-test_all 30 100
-echo "100,"$(IFS=$','; echo "${test_result[*]}" ) >> concurrency.csv
-test_all 30 1000
-echo "1000,"$(IFS=$','; echo "${test_result[*]}" ) >> concurrency.csv
-test_all 30 5000
-echo "5000,"$(IFS=$','; echo "${test_result[*]}" ) >> concurrency.csv
+# echo ","$(IFS=$','; echo "${web_frameworks[*]}" ) > concurrency.csv
+# test_all 0 100
+# echo "100,"$(IFS=$','; echo "${test_result[*]}" ) >> concurrency.csv
+# test_all 30 1000
+# echo "1000,"$(IFS=$','; echo "${test_result[*]}" ) >> concurrency.csv
+# test_all 30 5000
+# echo "5000,"$(IFS=$','; echo "${test_result[*]}" ) >> concurrency.csv
 
 
-test_all -1 5000
-echo ","$(IFS=$','; echo "${web_frameworks[*]}" ) > cpubound.csv
-echo "cpu-bound,"$(IFS=$','; echo "${test_result[*]}" ) >> cpubound.csv
+# test_all -1 5000
+# echo ","$(IFS=$','; echo "${web_frameworks[*]}" ) > cpubound.csv
+# echo "cpu-bound,"$(IFS=$','; echo "${test_result[*]}" ) >> cpubound.csv
 
-echo ","$(IFS=$','; echo "${web_frameworks[*]}" ) > cpubound-concurrency.csv
-test_all -1 100
-echo "100,"$(IFS=$','; echo "${test_result[*]}" ) >> cpubound-concurrency.csv
-test_all -1 1000
-echo "1000,"$(IFS=$','; echo "${test_result[*]}" ) >> cpubound-concurrency.csv
-test_all -1 5000
-echo "5000,"$(IFS=$','; echo "${test_result[*]}" ) >> cpubound-concurrency.csv
+# echo ","$(IFS=$','; echo "${web_frameworks[*]}" ) > cpubound-concurrency.csv
+# test_all -1 100
+# echo "100,"$(IFS=$','; echo "${test_result[*]}" ) >> cpubound-concurrency.csv
+# test_all -1 1000
+# echo "1000,"$(IFS=$','; echo "${test_result[*]}" ) >> cpubound-concurrency.csv
+# test_all -1 5000
+# echo "5000,"$(IFS=$','; echo "${test_result[*]}" ) >> cpubound-concurrency.csv
 
 
 mv -f processtime.csv ./testresults
-mv -f concurrency.csv ./testresults
-mv -f cpubound.csv ./testresults
-mv -f cpubound-concurrency.csv ./testresults
-./testresults/plot.sh
+# mv -f concurrency.csv ./testresults
+# mv -f cpubound.csv ./testresults
+# mv -f cpubound-concurrency.csv ./testresults
+# ./testresults/plot.sh
