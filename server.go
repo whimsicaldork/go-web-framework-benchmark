@@ -2,8 +2,6 @@ package main
 
 import (
 	"fmt"
-	"github.com/labstack/echo/v4/middleware"
-	"log"
 	"net/http"
 	"os"
 	"runtime"
@@ -11,17 +9,7 @@ import (
 	"time"
 
 	_ "github.com/abemedia/go-don/encoding/text"
-	"github.com/dimfeld/httptreemux"
-	fasthttprouter "github.com/fasthttp/router"
 	"github.com/gin-gonic/gin"
-	"github.com/go-chi/chi/v5"
-	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/fiber/v2/middleware/logger"
-	"github.com/gorilla/mux"
-	"github.com/julienschmidt/httprouter"
-	"github.com/labstack/echo/v4"
-	"github.com/qiangxue/fasthttp-routing"
-	"github.com/valyala/fasthttp"
 	"gofr.dev/pkg/gofr"
 )
 
